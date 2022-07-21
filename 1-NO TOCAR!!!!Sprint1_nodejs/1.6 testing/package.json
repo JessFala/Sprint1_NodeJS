@@ -1,0 +1,24 @@
+{
+  "name": "entrega-1.6-testing",
+  "version": "1.0.0",
+  "description": "Exercicis de l'ítem 1.6 de l'sprin 1 de backend Nodejs.",
+  "main": "Entrega 1.6-Testing.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JessFala/IT_A_Nodejs_Sprint1.git"
+  },
+  "keywords": [
+    "Test",
+    "Node",
+    "Jest"
+  ],
+  "author": "Jéssica Faciabén Lago",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JessFala/IT_A_Nodejs_Sprint1/issues"
+  },
+  "homepage": "https://github.com/JessFala/IT_A_Nodejs_Sprint1#readme"
+}
