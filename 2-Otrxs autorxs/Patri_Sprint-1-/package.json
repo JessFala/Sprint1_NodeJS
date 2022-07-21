@@ -1,0 +1,25 @@
+{
+  "name": "entrega_1.6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/patricia79/PGG.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/patricia79/PGG/issues"
+  },
+  "homepage": "https://github.com/patricia79/PGG#readme",
+  "devDependencies": {
+    "jest": "^27.4.3"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

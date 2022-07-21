@@ -67,7 +67,7 @@ const asincrFunct = async (id) => {
     console.log(err);
     }
 }
-(asincrFunct(3));
+asincrFunct(3);
 
 /*--------------------------------------------------------------------------------------
  Nivell 1  
