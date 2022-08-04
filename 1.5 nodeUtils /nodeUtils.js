@@ -78,27 +78,28 @@ const recursivitat = (num) => {
     },1000);
 }
 
-//recursivitat();
+recursivitat(2);
 
 /*Nivell 2 Ex 2 - 
 Crea una funció que llisti per la consola 
 el contingut del directori d'usuari de l'ordinador 
 utilizant Node Child Processes.*/
 
-const subprocess = () => {
-  exec('dir', (err, stdout, stderr) => {
-    if (err) {
-      console.log('Error: ', err);
-      return;
-    }
-    if (stderr) {
-      console.log('Standard Error: ', stderr);
-      return;
-    }
-    console.log(stdout);
-  })
-}
-//subprocess(); 
+const mostrarDir = () => {
+  const { exec } = require('child_process');
+  
+  exec('dir', (error, stdout, stderr) => {
+      if(error) {
+          console.log(`Error: ${error}`)
+          return
+      }
+      if(stderr) {
+          console.log(`stderr: ${error}`);
+          return
+      }
+      console.log(`stdout: ${stdout}`);
+  });
+  }
 
 //Nivell 3 - Ex 1 - 
 /*Crea una funció que creï dos fitxers 
@@ -110,3 +111,84 @@ esborri els fitxers inicials.
 Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior 
 tornant a generar una còpia de l'inicial.
 Inclou un README amb instruccions per a l'execució de cada part. */
+
+//Codifiquem
+
+const codificar = () => {
+  fs.readFile('exercici_1.5.txt', 'utf8', (error,data) => {
+      if (error) {
+          console.log(error);
+      }
+      let temp = Buffer.from(data).toString('base64');
+      escriureArxiu('exercici_1.5_64.txt',temp);
+  
+      temp = Buffer.from(data).toString('hex');
+      escriureArxiu('exercici_1.5_hex.txt',temp);
+      });
+  }
+
+  //Encriptació dels arxius
+
+const encriptacioArxiu = () => {
+  setTimeout (() => {
+      const crypto = require('crypto');
+      const algorith = 'aes-192-cbc';
+      const key = 'vOVH6sdmpNWjRRIqCc7rdxs0';
+      const iv = crypto.randomBytes(16);
+      const llegir = fs.createReadStream('exercici_1.5_64.txt');
+      const llegir2 = fs.createReadStream('exercici_1.5_hex.txt');
+      const encriptar = crypto.createCipheriv(algorith, key, iv);
+      const escriure = fs.createWriteStream('exercici_base64_enc.txt');
+      const escriure2 = fs.createWriteStream('exercici_hex_enc.txt');
+
+llegir.pipe(encriptar).pipe(escriure);
+llegir2.pipe(encriptar).pipe(escriure2);
+}, 500);
+
+setTimeout(() => {
+  fs.unlinkSync('exercici_1.5_64.txt', (error) => {
+      if (error) {
+      console.log(error);
+  }
+});
+  fs.unlinkSync('exercici_1.5_hex.txt', (error) => {
+      if (error) {
+      console.log(error);
+  }
+});
+},1000);
+  console.log('Arxius eliminats amb èxit');
+}
+
+//Desencriptar arxius per tornar a base64 i hex.
+
+const desencriptacioArxiu = () => {
+  setTimeout (() => {
+      const crypto = require('crypto');
+      const algorith = 'aes-192-cbc';
+      const key = 'vOVH6sdmpNWjRRIqCc7rdxs0';
+      const iv = crypto.randomBytes(16);
+      const llegir = fs.createReadStream('exercici_base64_enc.txt');
+      const llegir2 = fs.createReadStream('exercici_hex_enc.txt');
+      const desencriptar = crypto.createDecipheriv(algorith, key, iv);
+      const escriure = fs.createWriteStream('exercici_1.5_64.txt');
+      const escriure2 = fs.createWriteStream('exercici_1.5_hex.txt');
+
+llegir.pipe(desencriptar).pipe(escriure);
+llegir2.pipe(desencriptar).pipe(escriure2);
+  }, 2000);
+
+setTimeout(() => {
+  fs.unlinkSync('exercici_base64_enc.txt', (error) => {
+      if (error) {
+      console.log(error);
+  }
+});
+  fs.unlinkSync('exercici_hex_enc.txt', (error) => {
+      if (error) {
+      console.log(error);
+  }
+});
+},3000);
+  console.log('Arxius eliminats amb èxit');
+}
