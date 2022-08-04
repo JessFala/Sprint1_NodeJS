@@ -48,37 +48,29 @@ persona1.dirNom();
 /*------------------------------------------------------------------------------------
 Nivell 3. CORREGIT!!!!! 
 Ex. 1: Escriu una funció creadora d'objectes que faci instàncies d'una classe abstracta. 
-Invoca-la amb diferents definicions.
-** Clases abstractas ** --> clases que no pueden instanciarse; es decir, su referencia 
-de objeto NO puede crearse y dentro de ella contiene 1 o más métodos abstractos.
-Deben heredarse!
-Necesitan subclases para proporcionar implementaciones al método declarado en la clase
- abstracta.
-** Método abstracto ** --> método que SOLO puede declararse, pero NO tiene implementación.
-Tanto el ** prototipo de la instancia de un objeto ** (al que se accede mediante ** Object.getPrototypeOf(obj), o
-a través de la propiedad __proto__** ) como el ** prototipo que contiene el constructor** (que está en la 
-** propiedad prototype del constructor** ) hacen referencia al mismo objeto.*/
+Invoca-la amb diferents definicions.*/
 
-//Funció creadora d'objectes:
 
-class SuperHeroe {
+//Funció creadora de classe:
+class SuperWoman {
     constructor(){
-    if (this.constructor === SuperHeroe) {
-        throw new Error("No es pot instanciar una classe abstracta"); //Especificació de l'error segons
+        if (this.constructor === SuperWoman) {
+            throw new Error("No es pot instanciar una classe abstracta"); //Especificació de l'error
         }
+    }
+    poder() {
+        throw new Error("Mètode abstracte no té implementació");
     }
 }
 
-function superHeroePrototype () {  
-    return(Object.create(SuperHeroe.prototype, { constructor : {valor:SuperHeroe} }));
-};
+//Crea subclasse
+class Heroina extends SuperWoman { 
+    poder() {
+        console.log('Enverino sense deixar rastre!');
+    }
+}
 
-const afrodita = superHeroePrototype();
-batman = superHeroePrototype();
-console.log(afrodita);
-console.log(batman);
+//Instàncies concretes
 
-
-
-
-
+let villanelle = new Heroina();
+villanelle.poder();
