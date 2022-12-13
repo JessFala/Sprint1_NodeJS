@@ -1,44 +1,47 @@
-/*N1 Ex.1 Crea una funció que retorni una Promise que invoqui la funció resolve() o reject() que rep. 
-Invoca-la passant-li les dues funcions de manera que imprimeixin un missatge diferent depenent de
- si la Promise es resol o no.*/
+/*Comentaris correcció/feedback Omar:
+-Al N1 E2 has barrejat algunes coses: la funció callback no cap que ensenyi dos missatges diferents (això ho fa la principal, que ara no ho fa... li passa el paràmetre a la callback directgament)
+- Mira bé els enunciats del N2, no estàs agafant com a paràmetre ni retornant les coses que es demanen!
+- Un cop arreglis això el N2 E3 s'arregla sol*/
 
- function promesa(){
-    return new Promise(function(resolve, reject){
-        if(true){
-        resolve(`Enhorabona! Tot està correcte.`);
+/*--------------------------------------NIVELL 1--------------------------------------
+- Exercici 1
+Crea una funció que retorni una Promise 
+que invoqui la funció resolve() o reject() que rep. 
+Invoca-la passant-li les dues funcions de manera que imprimeixin un missatge diferent depenent de si la Promise es resol o no.*/
+
+    function aDiosPongoPorTestigo() {
+        return new Promise((resolve, reject) => { 
+            let aprendoEsto = true; 
+        if (aprendoEsto === true) {
+            resolve("Me abro una botella de vino");
+        } else {
+            reject("Bebo agua como los pollos")
         }
-        reject(`Error!`);
     });
-}   
-promesa().then(function(missatge){
-    console.log(missatge);
-}).catch(function(missatge){
-    console.log(missatge);
-});
-
-
- /* Nivell 1. Ex 2 - Crea una arrow function que 
- rebi un paràmetre i una funció callback i 
- li passi a la funció un missatge o un altre 
- (que s'imprimirà per consola) en funció del paràmetre rebut.*/
-
- function senarOno(num) {
-    if(num % 2 === 0) {
-        console.log("El número és parell");
-    } else {
-        console.log("El número és imparell");
     }
+    
+    aDiosPongoPorTestigo()
+        .then(res => {console.log(res);}) // () => {}// function then (log)()
+        .catch(err => {console.log(err);})
+
+/*- Exercici 2
+Crea una arrow function que rebi un paràmetre i una funció callback i 
+li passi a la funció un missatge o un altre (que s'imprimirà per consola) en funció del paràmetre rebut.*/
+
+const instruccions = message => console.log(message);
+
+const esAdult = (edat, callback) => {
+    if(typeof edat !== 'numero' && (edat > 0 && edat < 120)) {
+        throw new Error('Entrada no vàlida. Si us plau, torna a intentar-ho.')
+    }
+
+    edat >= 18 ? callback(`Ets adult. Pots passar!`) : callback(`Ets menor d'edat. Queda't fora`);
 }
 
-function typeOfNum(num, fn) {
-    fn(num);
-} 
-
-typeOfNum(22, senarOno);
- 
-
- /*N2 Ex.1 Donats els objectes employees i salaries, crea una arrow function getEmployee que retorni 
-una Promise efectuant la cerca en l'objecte "employees" pel seu id */
+/*---------------------------------------NIVELL 2---------------------------------------
+- Exercici 1 CORREGIT Ok!!!!!!!!
+Donats els objectes employees i salaries, crea una arrow function getEmployee() que 
+retorni una Promise efectuant la cerca en l'objecte pel seu id. */
 
 let employees = [{
     id: 1,
@@ -46,7 +49,7 @@ let employees = [{
 }, {
     id: 2,
     name: 'Bill Gates'
-},{
+}, {
     id: 3,
     name: 'Jeff Bezos'
 }];
@@ -66,54 +69,73 @@ let getEmployee = id => {
     return new Promise((resolve, reject) => {
         let empFound = employees.find(elem => elem.id === id);
         if(empFound) {
-            resolve(empFound.name);
+            resolve(empFound);
         } else {
-            reject("ID incorrecta. Si us plau, torna a intentar-ho.");
+            reject("Ho sentim, l'empleatx no s'ha trobatx.");
         }
     })
 } 
-getEmployee(1)
-.then(res => console.log(`El nom de l'empleatx amb la #ID ${id} és ${res}`))
-.catch(err => console.log(err))
 
-/*Nivell 2 Ex 2 - Crea una altra arrow function getSalary() similar a l'anterior 
+getEmployee(2)
+.then(res => console.log(res))
+.catch(err => console.log(err));
+
+/*Nivell 2
+- Exercici 2 CORREGIT  Ok !!!!!!!!!!!!
+Crea una altra arrow function getSalary() similar a l'anterior 
 que rebi com a paràmetre un objecte employee i retorni el seu salari.*/
 
-let getSalary = id => {
+const getSalary = (employee) => {
     return new Promise((resolve, reject) => {
-        let salFound = salaries.find(elem => elem.id === id);
-        if(salFound) {
-            resolve(salFound.salary);
-        } else {
-            reject("Invalid ID. Please, try again.");
+        let salFound = salaries.find(el => el.id === employee.id);
+                if(salFound) {
+                    resolve (`El salari d'aquestx treballadorx és de: ${salFound.salary}`);
+                } else {
+                    reject("Ho sentim, aquestx empleatx no s'ha trobatx.");
         }
-    })
+    });
 }
-getSalary(2)
-    .then(res => console.log(`L'empleatx amb la ID# ${id} rep un salari mensual de ${res} $.`))
-    .catch(err => console.log(err));
+getSalary({
+    id: 2,
+    name: 'Bill Gates'})
+    .then(res => console.log(res))
+    .catch(error => console.log (error));
 
-//Nivell 2 Ex. 3 - Invoca la primera funció getEmployee() i després getSalary() niant l'execució de les dues promises de manera que es retorni per la consola el nom de l'empleat i el seu salari.
-//NB: calling the fn getSalary(id) instead of returning it will return undefined value for sal
 
-let id = 1
+
+/*- Exercici 3  CORREGIT!!!!!!!!!!!!
+Invoca la primera funció getEmployee() i després getSalary() 
+niant l'execució de les dues promises de manera que 
+es retorni per la consola el nom de l'empleat i el seu salari.*/
+
+let id = 1; 
 
 getEmployee(id)
-.then(name => {
-    console.log(`L'empleatx amb la ID# ${id} és ${name}.`);
-    return getSalary(id); 
-}).then(sal => {
-    console.log(`L'empleatx amb la ID# ${id} rep un salari mensual de ${sal} $.`);
-}) 
-
-//Nivell 3 Ex. 1 - Fixa un element catch a la invocació del nivell anterior que capturi qualsevol error i el mostri per la consola.
-
-//let id = 2;
-getEmployee(id).then(name => {
-    console.log(`L'empleatx amb la ID# ${id} és ${name}.`);
-    return getSalary(id);
-}).then(sal => {
-    console.log(`L'empleatx amb la ID# ${id} rep un salari mensual de ${sal} $.`);
-}).catch(err => {
-    console.log(err);
+    .then((res) => {
+        getSalary(res)
+        .then((salary) => {
+            console.log(`EMPLOYEE NAME: ${res.name}; SALARY: ${salary}`)
+    })
 });
+
+
+/*-----------------------------------NIVELL 3-------------------------------------------
+- Exercici 1
+Fixa un element catch a la invocació del nivell anterior que 
+capturi qualsevol error i el mostri per la consola.*/
+
+id = 0; 
+
+ getEmployee(id)
+ .then((res) => {
+     getSalary(res)
+     .then((salary) => {
+         console.log(`EMPLOYEE NAME: ${res.name}; SALARY: ${salary}`)
+ });
+})
+ .catch((error) => {
+     console.log(error)
+    });
+
+
+
