@@ -105,4 +105,4 @@ const callFn = async () => {
     getSalary,
     getEmployee,
     asyncFunction
- }
+}
