@@ -1,5 +1,25 @@
-//Nivell 1 Ex 1 - Crea una funció asíncrona que rebi un id d'empleat i imprimeixi per pantalla el nom de l'empleat i el seu salari, usant les funcions getEmployee() i getSalary() que has definit a la tasca anterior.
+//Arxius amb les funcions de les que farem tests.
 
+//Nivell 1 
+//A. Arxiu amb les funcions sumar, restar, multiplicar i dividir dos o més operands. 
+
+function add(a, b){
+    return a + b;
+}
+
+function substract(a, b){
+    return a - b;
+}
+
+function multiply(a, b){
+    return a * b;
+}
+
+function divide(a, b){
+    return a / b;
+}
+
+//B. Arxiu amb les funcions a testar per verificar el funcionament de l'exercici Async / Await Nivell 1 - Exercici 1.
 let employees = [{
     id: 1,
     name: 'Linux Torvalds'
@@ -10,7 +30,8 @@ let employees = [{
     id: 3,
     name: 'Jeff Bezos'
 }];
- 
+
+
 let salaries = [{
     id: 1,
     salary: 4000
@@ -24,16 +45,16 @@ let salaries = [{
 
 let getEmployee = id => {
     return new Promise((resolve, reject) => {
-        let empFound = employees.find(elem => elem.id === id); //checks whether an object employee exists using its ID.
+        let empFound = employees.find(elem => elem.id === id); 
         if(empFound) { 
-            resolve(empFound); //returns the employee with the ID.
+            resolve(empFound); 
         } else {
             reject("Invalid ID. Please, try again.");
         }
     })
 } 
 
-let getSalary = employee => { //Objeto del array employees que me haya dado getEmployee
+let getSalary = employee => { 
     return new Promise((resolve, reject) => {
         let salFound = salaries.find(salary => salary.id === employee.id);  
         if(salFound) {
@@ -47,16 +68,15 @@ let getSalary = employee => { //Objeto del array employees que me haya dado getE
 let asyncFunction = async (id) => {
     try {
         let empId = await getEmployee(id);
-        let empSalary = await getSalary(empId); //
+        let empSalary = await getSalary(empId); 
         console.log(empSalary)
     } catch(err) {
         console.log(err);
     }
 
 }
-console.log(asyncFunction(3)); 
 
-//Nivell 1 Ex. 2 - Crea una nova funció asíncrona que cridi a una altra que retorni una Promise que efectuï la seva funció resolve() després de 2 segons de la seva invocació.
+//C. Arxiu amb les funcions corresponents al Nivell 1, Ex 2
 
 const functionSTO = () => {
     const promise1 = new Promise((resolve) => {
@@ -75,21 +95,14 @@ const callFn = async () => {
     }
 };
 
-//Nivell 2 Ex 1 - Crea una funció que retorni el doble del número que se li passa com a paràmetre després de 2 segons. Crea una altra funció que rebi tres números i calculi la suma dels seus dobles usant la funció anterior.
+ //Exports
 
-/* IN PROGRESS
-const multiplyByTwo = (num, callback) => {
-    const res = num * 2;
-    return setTimeout(() => {
-        callback(res)
-}, 2000)
-    };
-*/
-//Nivell 3 Ex 1 - Força i captura tants errors com puguis dels nivells 1 i 2. 
-
-
-
-
-
-
-
+ module.exports = {
+    add,
+    substract,
+    multiply,
+    divide,
+    getSalary,
+    getEmployee,
+    asyncFunction
+}
