@@ -1,3 +1,13 @@
+/*Comentaris Omar: Vale, Jess! Aun tiene algunos problemas:
+
+- TODO en el package.json falta añadir jest para que no haya que instalarlo a mano (puede que a ti no te haga falta si lo tienes instalado globalmente)
+
+- TODO los tests fallan por la ruta del require del app.js (que està una carpeta más arriba)
+
+- TODO a partir de ahi hay crashean varias cosas: algun parentesis antes de tiempo, tests dentro de tests...
+
+-TODO Ejecutalo y echale un ojo, que creo que has modificado cosas y no las has probado del todo ;)*/
+
 //Arxius amb les funcions de les que farem tests.
 
 //Nivell 1 
