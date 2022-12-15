@@ -1,0 +1,16 @@
+{
+  "name": "Entrega1.6 Testing",
+  "version": "1.1.0",
+  "description": "Entrega 1.6. - Testing utilitzant Jest",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "testing",
+    "jest",
+    "nodejs"
+  ],
+  "author": "JessFala",
+  "license": "ISC"
+}
