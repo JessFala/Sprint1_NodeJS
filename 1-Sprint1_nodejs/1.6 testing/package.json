@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JessFala/IT_A_Nodejs_Sprint1.git"
+    "url": "https://github.com/JessFala/Sprint1_NodeJS"
   },
   "keywords": [
     "Test",
@@ -18,7 +18,7 @@
   "author": "JessFala",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JessFala/IT_A_Nodejs_Sprint1/issues"
+    "url": "https://github.com/JessFala/Sprint1_NodeJS"
   },
-  "homepage": "https://github.com/JessFala/IT_A_Nodejs_Sprint1#readme"
+  "homepage": "https://github.com/JessFala/Sprint1_NodeJS"
 }
