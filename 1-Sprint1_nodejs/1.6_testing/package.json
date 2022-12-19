@@ -1,0 +1,14 @@
+{
+  "name": "1.6_testing",
+  "version": "1.0.0",
+  "description": "1.6 testing - Sprint 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "JessFala",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.3.1"
+  }
+}
