@@ -6,12 +6,12 @@ Para realizar las pruebas, el código está escrito en su propio fichero .js con
 
 ### Paso 1:
 
-- Instalar dependencias siguiendo la siguiente línia de comando en el terminal:
+- Instalar las dependencias mediante la siguiente línia de comando en el terminal:
 
         npm install
 
 ### Paso 2:
 
-- Prueba de ejecución. Siguiendo la siguiente línia de comandos en el terminal:
+- Prueba de ejecución. Con la siguiente línia de comandos en el terminal:
 
         npm test
