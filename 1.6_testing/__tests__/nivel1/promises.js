@@ -1,4 +1,4 @@
-const {getEmployee, getSalary} = require('../../src/Level 1/promises.js');
+const {getEmployee, getSalary} = require('../../src/nivel1/promises.js');
 
 describe('Test for getEmployee() and getSalary() functions from 1.3, Level 2', () => {
 

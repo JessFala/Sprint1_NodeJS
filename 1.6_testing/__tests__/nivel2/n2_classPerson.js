@@ -1,4 +1,4 @@
-const { Person } = require('../../src/Level 2/l2_classPerson.js');
+const { Person } = require('../../src/nivel2/n2_classPerson.js');
 
 // creates mock 
 jest.mock('../../src/Level 2/l2_classPerson.js');

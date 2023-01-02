@@ -1,5 +1,5 @@
 //const {instructions, trafficLight} = require('../src/callbacks.js');
-const { instructions, isAdult } = require('../../src/Level 1/callbacks');
+const { instructions, isAdult } = require('../../src/nivel1/callbacks.js');
 
 describe('Test for functions in 1.3 Level 1, ex.2', () => {
   test('instructions("hello") should log the message hello to the console', () => {

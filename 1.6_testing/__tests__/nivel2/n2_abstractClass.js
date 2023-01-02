@@ -1,4 +1,4 @@
-const { Citizen,Australian, German, Spaniard } = require('../../src/Level 2/l2_abstractClass');
+const { Citizen,Australian, German, Spaniard } = require('../../src/nivel2/n2_abstractClass.js');
 
 describe('Test for 1.2. Level 3, ex. 1', () => {
     
