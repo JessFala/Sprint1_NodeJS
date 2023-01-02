@@ -1,7 +1,7 @@
-const { Person } = require('../../src/nivel2/n2_classPerson.js');
+const { Person } = require('../../src/nivel2/n2_classPerson');
 
 // creates mock 
-jest.mock('../../src/Level 2/l2_classPerson.js');
+jest.mock('../../src/nivel2/n2_classPerson');
 
  // will Clear all instances and calls to constructor and all methods:
 beforeEach(() => {
