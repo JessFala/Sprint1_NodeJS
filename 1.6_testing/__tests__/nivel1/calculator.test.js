@@ -1,4 +1,4 @@
-const mathOperations = require('../../src/Level 1/calculator.js');
+const mathOperations = require('../../src/Nivel 1/calculator.js');
 
 describe("Calculator tests", () => {
     test('adding 1 + 2 should return 3', () => {
